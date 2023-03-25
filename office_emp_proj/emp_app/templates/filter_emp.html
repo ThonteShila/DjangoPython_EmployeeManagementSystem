@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Filter Employees</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<h1>Employee Management System</h1>
+            <hr>
+            <a class="btn btn-primary" href="/all_emp" role="button">Employees List</a>
+            <a class="btn btn-primary" href="/add_emp" role="button">Employees Add</a>
+            <a class="btn btn-primary" href="/remove_emp" role="button">Employees Remove</a>
+            <a class="btn btn-primary" href="/filter_emp" role="button">Employees Filter</a>
+        </div>		
+		<h1>Filter Employees</h1>
+        <hr>	
+		<form action="/filter_emp" method="post">
+			{% csrf_token %}
+			<div class="mb-3">
+				<label for="firstname" class="form-label">First Name/Last Name</label>
+				<input type="text" class="form-control" id="txtFirstname" 
+				name="name" aria-describedby="firstname"
+				value="{{ name }}">
+				
+				<label for="dept" class="form-label">Select Dept</label>
+				<input type="text" class="form-control" id="txtDept" name="dept" aria-describedby="dept"
+				value="{{ dept }}">
+				<label for="role" class="form-label">Select Role</label>
+				<input type="text" class="form-control" id="txtRole" name="role" aria-describedby="role"
+				value="{{ role }}">
+					
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
