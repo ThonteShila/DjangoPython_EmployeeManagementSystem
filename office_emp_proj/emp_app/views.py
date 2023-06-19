@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse
 from .models import Employee, Role, Department
 from datetime import datetime
 from django.db.models import Q
+from .form import FeedbackForm
 # Create your views here.
 
 
@@ -77,6 +78,17 @@ def filter_emp(request):
         return render(request,'filter_emp.html')
     else:
         return HttpResponse("Else is not handled, Employee not filtered.")
+def feedback_emp(request):
+    if request.method=='post':
+        form=FeedbackForm(request.post)
+        if form.is_valid():
+            form.save()
+            print("data saved")
+        else:
+            return render(request, 'feedback_emp.html',{'form':form})
+    else:
+        form=FeedbackForm()
+        return render(request,"feedback_emp.html",{'form':form})
     
 
  
